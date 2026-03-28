@@ -20,11 +20,10 @@
 
   outputs =
     {
-      self,
       nixpkgs,
       home-manager,
       ...
-    }@inputs:
+    }:
     {
       nixosConfigurations = {
         nixos = nixpkgs.lib.nixosSystem {
