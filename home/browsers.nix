@@ -58,6 +58,12 @@
 
         # Enable Firefox sync
         "identity.fxaccounts.enabled" = true;
+
+        # Vertical tabs
+        "sidebar.revamp" = true;
+        "sidebar.verticalTabs" = true;
+        "sidebar.position_start" = false;
+        "sidebar.visibility" = "always-show";
       };
     };
   };
