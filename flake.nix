@@ -28,7 +28,7 @@
       nixosConfigurations = {
         nixos = nixpkgs.lib.nixosSystem {
           modules = [
-            ./host/fw13
+            ./host/fw13/configuration.nix
 
             # make home-manager as a module of nixos
             # so that home-manager configuration will be deployed automatically when executing `nixos-rebuild switch`
