@@ -11,17 +11,39 @@
       ];
 
       policies = {
-        Cookies = {
-          Allow = [
-            "http://github.com"
-            "https://github.com"
-            "http://proton.me"
-            "https://proton.me"
-            "http://youtube.com"
-            "https://youtube.com"
-            "http://twitch.tv"
-            "https://twitch.tv"
+        SearchEngines = {
+          Add = [
+            {
+              Name = "Kagi";
+              Alias = "kagi";
+              URLTemplate = "https://kagi.com/search?q={searchTerms}";
+              SuggestURLTemplate = "https://kagisuggest.com/api/autosuggest?q={searchTerms}";
+            }
           ];
+
+          Default = "Kagi";
+        };
+
+        Cookies = {
+          Allow =
+            let
+              domains = [
+                "deezer.com"
+                "devdocs.io"
+                "duckduckgo.com"
+                "github.com"
+                "instapaper.com"
+                "kagi.com"
+                "proton.me"
+                "simplelogin.io"
+                "twitch.tv"
+                "youtube.com"
+              ];
+            in
+            builtins.concatMap (d: [
+              "http://${d}"
+              "https://${d}"
+            ]) domains;
         };
 
         # Extensions
@@ -53,6 +75,8 @@
       };
 
       settings = {
+        "browser.search.suggest.enabled" = true;
+
         # Use KDE file picker
         "widget.use-xdg-desktop-portal.file-picker" = 1;
 
