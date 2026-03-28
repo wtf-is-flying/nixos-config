@@ -1,0 +1,38 @@
+#|
+    Kanata
+
+    Keymap: https://github.com/jtroo/kanata/blob/209f173f6fdda371cc21bad3cf2c3b9b7328b85b/parser/src/keys/mod.rs#L176
+|#
+
+(defcfg
+    process-unmapped-keys yes
+)
+
+(defsrc
+    f1 f2 f3 f4 f5 f6 f7 f8 f9 f10 f11 f12
+                                       bspc
+    caps
+
+    fn lctrl lalt lmeta           rmeta
+)
+
+(deflayer default
+    f1 f2 f3 f4 f5 f6 f7 f8 f9 f10 f11 f12
+                                       bspc
+    @cap
+
+    lctrl @med lalt lmeta         rshift
+)
+
+(deflayer media
+    brdwn bru mctl sls dtn dnd prev pp next mute voldwn volu
+                                                        del
+    _
+
+    lctrl @med lalt lmeta         rshift
+)
+
+(defalias
+    cap (tap-hold-press 0 200 esc lctl)
+    med (layer-while-held media)
+)
