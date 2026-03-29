@@ -19,26 +19,28 @@
       home-manager,
       ...
     }:
+    let
+      system = "x86_64-linux";
+      pkgs = nixpkgs.legacyPackages.${system};
+    in
     {
       nixosConfigurations = {
         nixos = nixpkgs.lib.nixosSystem {
           modules = [
             ./host/fw13/configuration.nix
-
-            # home-manager as a module of nixos
-            home-manager.nixosModules.home-manager
-            {
-              home-manager = {
-                useGlobalPkgs = true;
-                useUserPackages = true;
-                users.jy = ./home;
-
-                # Optionally, use home-manager.extraSpecialArgs to pass
-                # arguments to home.nix
-              };
-            }
           ];
         };
+      };
+
+      homeConfigurations."jy" = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+
+        # Specify your home configuration modules here, for example,
+        # the path to your home.nix.
+        modules = [ ./home ];
+
+        # Optionally use extraSpecialArgs
+        # to pass through arguments to home.nix
       };
     };
 }

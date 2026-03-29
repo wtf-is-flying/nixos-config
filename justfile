@@ -4,7 +4,10 @@ deploy:
 debug:
   sudo nixos-rebuild switch --flake .#nixos --show-trace --verbose
 
-up:
+hmswitch:
+  home-manager switch --flake .#jy
+
+update:
   nix flake update
 
 # Update specific input
