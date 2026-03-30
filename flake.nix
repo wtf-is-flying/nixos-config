@@ -47,7 +47,7 @@
       nixosConfigurations = {
         nixos = nixpkgs.lib.nixosSystem {
           modules = [
-            ./host/fw13/configuration.nix
+            ./hosts/fw13/configuration.nix
             nixos-hardware.nixosModules.framework-amd-ai-300-series
           ];
         };
