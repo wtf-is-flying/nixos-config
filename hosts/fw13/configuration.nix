@@ -100,6 +100,11 @@
 
   security.rtkit.enable = true;
 
+  # Disable fingerprint login
+  # SDDM gets stuck waiting for fingerprint when it is enabled.
+  # See: https://github.com/NixOS/nixpkgs/issues/239770
+  security.pam.services.login.fprintAuth = false;
+
   # Touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
