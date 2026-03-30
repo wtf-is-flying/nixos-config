@@ -1,8 +1,8 @@
 deploy:
-  sudo nixos-rebuild switch --flake .#nixos
+  sudo nixos-rebuild switch --flake .#fw13
 
 debug:
-  sudo nixos-rebuild switch --flake .#nixos --show-trace --verbose
+  sudo nixos-rebuild switch --flake .#fw13 --show-trace --verbose
 
 hmswitch:
   home-manager switch --flake .#jy

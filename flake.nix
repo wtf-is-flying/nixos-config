@@ -28,6 +28,19 @@
         allowUnfree = true;
       };
 
+      # Function for NixOS system configuration
+      mkNixosConfiguration =
+        hostname:
+        nixpkgs.lib.nixosSystem {
+          specialArgs = {
+            inherit nixos-hardware;
+          };
+          modules = [
+            { nixpkgs.config = nixpkgsConfig; }
+            ./hosts/${hostname}/configuration.nix
+          ];
+        };
+
       # Function for Home Manager configuration
       mkHomeManagerConfiguration =
         system:
@@ -45,12 +58,7 @@
     in
     {
       nixosConfigurations = {
-        nixos = nixpkgs.lib.nixosSystem {
-          modules = [
-            ./hosts/fw13/configuration.nix
-            nixos-hardware.nixosModules.framework-amd-ai-300-series
-          ];
-        };
+        fw13 = mkNixosConfiguration "fw13";
       };
 
       homeConfigurations."jy" = mkHomeManagerConfiguration "x86_64-linux";
