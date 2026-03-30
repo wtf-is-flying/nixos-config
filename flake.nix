@@ -23,8 +23,25 @@
       ...
     }:
     let
-      system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
+      # Shared Nixpkgs configuration
+      nixpkgsConfig = {
+        allowUnfree = true;
+      };
+
+      # Function for Home Manager configuration
+      mkHomeManagerConfiguration =
+        system:
+        home-manager.lib.homeManagerConfiguration {
+          pkgs = import nixpkgs {
+            inherit system;
+            config = nixpkgsConfig;
+          };
+          modules = [
+            ./home
+          ];
+          # Optionally use extraSpecialArgs
+          # to pass through arguments to home.nix
+        };
     in
     {
       nixosConfigurations = {
@@ -36,15 +53,6 @@
         };
       };
 
-      homeConfigurations."jy" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-
-        # Specify your home configuration modules here, for example,
-        # the path to your home.nix.
-        modules = [ ./home ];
-
-        # Optionally use extraSpecialArgs
-        # to pass through arguments to home.nix
-      };
+      homeConfigurations."jy" = mkHomeManagerConfiguration "x86_64-linux";
     };
 }
