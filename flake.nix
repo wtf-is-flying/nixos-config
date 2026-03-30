@@ -7,6 +7,8 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
 
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+
     home-manager = {
       url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -17,6 +19,7 @@
     {
       nixpkgs,
       home-manager,
+      nixos-hardware,
       ...
     }:
     let
@@ -28,6 +31,7 @@
         nixos = nixpkgs.lib.nixosSystem {
           modules = [
             ./host/fw13/configuration.nix
+            nixos-hardware.nixosModules.framework-amd-ai-300-series
           ];
         };
       };
