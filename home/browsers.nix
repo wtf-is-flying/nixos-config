@@ -28,10 +28,14 @@
           Allow =
             let
               domains = [
+                "amazon.fr"
+                "chatgpt.com"
+                "claude.ai"
                 "deezer.com"
                 "devdocs.io"
                 "duckduckgo.com"
                 "github.com"
+                "google.com"
                 "instapaper.com"
                 "kagi.com"
                 "proton.me"
