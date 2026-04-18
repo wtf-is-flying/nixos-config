@@ -8,4 +8,8 @@ return {
 
 	font = wezterm.font("JetBrainsMono Nerd Font", { weight = "Regular" }),
 	font_size = 10,
+
+	-- Don't override SSH_AUTH_SOCK
+	-- https://github.com/wezterm/wezterm/issues/7324
+	mux_enable_ssh_agent = false,
 }

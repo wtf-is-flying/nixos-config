@@ -55,10 +55,11 @@
     # changes in each release.
     stateVersion = "25.11";
   };
-  # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
 
   programs = {
+    # Let Home Manager install and manage itself.
+    home-manager.enable = true;
+
     lazydocker = {
       enable = true;
     };
