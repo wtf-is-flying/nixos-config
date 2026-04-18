@@ -4,6 +4,7 @@
   home = {
     packages = with pkgs; [
       bat
+      fd
       ripgrep
       tealdeer
       yazi
