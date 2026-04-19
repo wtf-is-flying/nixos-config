@@ -8,6 +8,7 @@
     ./term
     ./editors
     ./browsers.nix
+    ./languages.nix
   ];
 
   home = {
@@ -22,21 +23,6 @@
       tree
       zip
       unzip
-
-      cargo
-      rustc
-      gcc
-      go
-      lua-language-server
-      nixfmt
-      nil
-      nodejs_24
-      python3
-      rust-analyzer
-      statix
-      stylua
-      tree-sitter
-      uv
 
       btop
       jq
