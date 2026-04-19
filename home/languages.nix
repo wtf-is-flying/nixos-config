@@ -12,6 +12,9 @@
       lua-language-server
       stylua
 
+      # Markdown
+      markdownlint-cli2
+
       # Nix
       nixfmt
       nil
