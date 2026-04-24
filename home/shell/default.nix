@@ -49,11 +49,4 @@
     };
 
   };
-
-  services = {
-    ssh-agent = {
-      enable = true;
-      enableFishIntegration = true;
-    };
-  };
 }

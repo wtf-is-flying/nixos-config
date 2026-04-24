@@ -69,6 +69,11 @@
     };
   };
 
+  programs.ssh = {
+    startAgent = true;
+    enableAskPassword = true;
+  };
+
   services = {
     # Disable X11
     xserver.enable = false;
@@ -96,14 +101,35 @@
       # If you want to use JACK applications, uncomment this
       # jack.enable = true;
     };
+
+    mullvad-vpn = {
+      enable = true;
+      package = pkgs.mullvad-vpn;
+    };
   };
 
-  security.rtkit.enable = true;
+  # List packages installed in system profile.
+  # To search, run: $ nix search wget
+  environment = {
+    systemPackages = with pkgs; [
+      vim
+      wget
+      curl
+    ];
 
-  # Disable fingerprint login
-  # SDDM gets stuck waiting for fingerprint when it is enabled.
-  # See: https://github.com/NixOS/nixpkgs/issues/239770
-  security.pam.services.login.fprintAuth = false;
+    variables = {
+      SSH_ASKPASS_REQUIRE = "prefer";
+    };
+  };
+
+  security = {
+    rtkit.enable = true;
+
+    # Disable fingerprint login
+    # SDDM gets stuck waiting for fingerprint when it is enabled.
+    # See: https://github.com/NixOS/nixpkgs/issues/239770
+    pam.services.login.fprintAuth = false;
+  };
 
   # Touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
@@ -122,19 +148,6 @@
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
   ];
-
-  # List packages installed in system profile.
-  # To search, run: $ nix search wget
-  environment.systemPackages = with pkgs; [
-    vim
-    wget
-    curl
-  ];
-
-  services.mullvad-vpn = {
-    enable = true;
-    package = pkgs.mullvad-vpn;
-  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
