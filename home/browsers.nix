@@ -42,6 +42,7 @@
                 "duckduckgo.com"
                 "github.com"
                 "google.com"
+                "hltv.org"
                 "instapaper.com"
                 "kagi.com"
                 "proton.me"
