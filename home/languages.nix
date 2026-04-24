@@ -30,8 +30,10 @@
 
       # Rust
       cargo
-      rustc
+      clippy
       rust-analyzer
+      rustc
+      rustfmt
 
       # Utils
       tree-sitter
