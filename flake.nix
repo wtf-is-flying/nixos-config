@@ -13,6 +13,9 @@
       url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # lazyvim-nix
+    lazyvim.url = "github:pfassina/lazyvim-nix";
   };
 
   outputs =
@@ -20,6 +23,7 @@
       nixpkgs,
       home-manager,
       nixos-hardware,
+      lazyvim,
       ...
     }:
     let
@@ -52,6 +56,10 @@
           modules = [
             ./home
           ];
+
+          extraSpecialArgs = {
+            inherit lazyvim; # ← add this
+          };
           # Optionally use extraSpecialArgs
           # to pass through arguments to home.nix
         };

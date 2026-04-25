@@ -3,9 +3,6 @@
 -- Add any additional options here
 
 vim.opt.title = true
--- vim.opt.titlestring = "%t%( (%{expand('%:.')})%) - Nvim"
-
-vim.opt.background = "dark"
 
 -- Snacks animations
 vim.g.snacks_animate = false
@@ -21,4 +18,4 @@ vim.g.lazyvim_python_lsp = "basedpyright"
 -- vim.g.lazyvim_rust_diagnostics = "bacon-ls"
 
 -- Expand 'cc' into 'CodeCompanion' in the command line
-vim.cmd([[cab cc CodeCompanion]])
+-- vim.cmd([[cab cc CodeCompanion]])

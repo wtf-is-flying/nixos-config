@@ -46,7 +46,7 @@
       settings = {
         target-version = "py312";
 
-        line-length = 88;
+        line-length = 89;
         indent-width = 4;
 
         exclude = [
