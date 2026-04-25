@@ -1,14 +1,14 @@
-{ pkgs, ... }:
 {
   imports = [
+    ./applications.nix
+    ./browsers.nix
+    ./editors
     ./git.nix
     ./kanata
-    ./tmux
+    ./languages.nix
     ./shell
     ./term
-    ./editors
-    ./browsers.nix
-    ./languages.nix
+    ./tmux
   ];
 
   home = {
@@ -16,20 +16,6 @@
     # paths it should manage.
     username = "jy";
     homeDirectory = "/home/jy";
-
-    # Packages that should be installed to the user profile.
-    packages = with pkgs; [
-      lsof
-      tree
-      zip
-      unzip
-
-      btop
-      jq
-      just
-
-      localsend
-    ];
 
     # This value determines the Home Manager release that your
     # configuration is compatible with. This helps avoid breakage
@@ -40,17 +26,6 @@
     # the Home Manager release notes for a list of state version
     # changes in each release.
     stateVersion = "25.11";
-  };
-
-  programs = {
-    # Let Home Manager install and manage itself.
-    home-manager.enable = true;
-
-    lazydocker = {
-      enable = true;
-    };
-
-    vesktop.enable = true;
   };
 
   # Default applications
