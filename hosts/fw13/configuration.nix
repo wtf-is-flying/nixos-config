@@ -102,6 +102,15 @@
       # jack.enable = true;
     };
 
+    udev = {
+      enable = true;
+      # Fix fprintd after sleep
+      # https://wiki.archlinux.org/title/Fprint#fprintd_starts_before_fingerprint_reader_device_is_initialized_after_resuming_from_sleep
+      extraRules = ''
+        ACTION=="add", SUBSYSTEM=="usb", DRIVERS=="usb", ATTRS{idVendor}=="06cb", ATTRS{idProduct}=="00fc", ATTR{power/persist}="1", RUN="${pkgs.coreutils}/bin/chmod 444 %S%p/../power/persist"
+      '';
+    };
+
     mullvad-vpn = {
       enable = true;
       package = pkgs.mullvad-vpn;
@@ -115,6 +124,7 @@
       vim
       wget
       curl
+      usbutils
     ];
 
     variables = {
