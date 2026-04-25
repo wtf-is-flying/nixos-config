@@ -20,6 +20,8 @@
     # Let Home Manager install and manage itself.
     home-manager.enable = true;
 
+    anki.enable = true;
+
     lazydocker = {
       enable = true;
     };
