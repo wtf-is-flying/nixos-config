@@ -69,9 +69,13 @@
     };
   };
 
-  programs.ssh = {
-    startAgent = true;
-    enableAskPassword = true;
+  programs = {
+    ssh = {
+      startAgent = true;
+      enableAskPassword = true;
+    };
+
+    steam.enable = true;
   };
 
   services = {
