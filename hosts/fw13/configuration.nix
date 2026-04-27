@@ -125,10 +125,11 @@
   # To search, run: $ nix search wget
   environment = {
     systemPackages = with pkgs; [
+      curl
+      imagemagick
+      usbutils
       vim
       wget
-      curl
-      usbutils
     ];
 
     variables = {
