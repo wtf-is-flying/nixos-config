@@ -20,7 +20,12 @@
     # Let Home Manager install and manage itself.
     home-manager.enable = true;
 
-    anki.enable = true;
+    anki = {
+      enable = true;
+      language = "en_US";
+      sync.username = "learn.rethink836@slmail.me";
+      sync.keyFile = ./secret.ankikey;
+    };
 
     lazydocker = {
       enable = true;
