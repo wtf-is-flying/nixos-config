@@ -126,8 +126,6 @@
   environment = {
     systemPackages = with pkgs; [
       curl
-      imagemagick
-      signal-desktop
       usbutils
       vim
       wget
@@ -157,6 +155,11 @@
     extraGroups = [
       "networkmanager"
       "wheel"
+    ];
+
+    packages = with pkgs; [
+      imagemagick
+      signal-desktop
     ];
   };
 
