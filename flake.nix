@@ -57,16 +57,17 @@
             ./home
           ];
 
-          extraSpecialArgs = {
-            inherit lazyvim; # ← add this
-          };
           # Optionally use extraSpecialArgs
           # to pass through arguments to home.nix
+          extraSpecialArgs = {
+            inherit lazyvim;
+          };
         };
     in
     {
       nixosConfigurations = {
         fw13 = mkNixosConfiguration "fw13";
+        tower = mkNixosConfiguration "tower";
       };
 
       homeConfigurations."jy" = mkHomeManagerConfiguration "x86_64-linux";
