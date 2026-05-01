@@ -74,19 +74,34 @@
     steam.enable = true;
   };
 
-  services = {
-    # Enable the X11 windowing system.
-    # You can disable this if you're only using the Wayland session.
-    xserver.enable = true;
+  hardware = {
+    graphics.enable = true;
 
+    # NVIDIA driver
+    nvidia = {
+      modesetting.enable = true;
+      nvidiaSettings = true;
+      open = false;
+    };
+  };
+
+  services = {
     # Enable the KDE Plasma Desktop Environment.
     displayManager.sddm.enable = true;
     desktopManager.plasma6.enable = true;
 
-    # Configure keymap in X11
-    xserver.xkb = {
-      layout = "fr";
-      variant = "";
+    xserver = {
+      # Enable the X11 windowing system.
+      # You can disable this if you're only using the Wayland session.
+      enable = true;
+
+      videoDrivers = [ "nvidia" ];
+
+      # Configure keymap in X11
+      xkb = {
+        layout = "fr";
+        variant = "";
+      };
     };
 
     # Enable CUPS to print documents.
