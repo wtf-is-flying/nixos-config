@@ -164,6 +164,7 @@
 
     packages = with pkgs; [
       imagemagick
+      moonlight-qt
       signal-desktop
       tailscale-systray
     ];
