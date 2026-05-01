@@ -119,6 +119,11 @@
       enable = true;
       package = pkgs.mullvad-vpn;
     };
+
+    tailscale = {
+      # Enable tailscale at startup
+      enable = true;
+    };
   };
 
   # List packages installed in system profile.
@@ -160,6 +165,7 @@
     packages = with pkgs; [
       imagemagick
       signal-desktop
+      tailscale-systray
     ];
   };
 
