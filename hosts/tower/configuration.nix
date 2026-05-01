@@ -122,6 +122,16 @@
       enable = true;
       package = pkgs.mullvad-vpn;
     };
+
+    sunshine = {
+      enable = true;
+      autoStart = true;
+      capSysAdmin = true; # only needed for Wayland
+      openFirewall = true;
+
+      # Enable hardware acceleration
+      package = pkgs.sunshine.override { cudaSupport = true; };
+    };
   };
 
   # List packages installed in system profile.
