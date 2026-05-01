@@ -132,6 +132,14 @@
       # Enable hardware acceleration
       package = pkgs.sunshine.override { cudaSupport = true; };
     };
+
+    tailscale = {
+      # Enable tailscale at startup
+      enable = true;
+
+      # If you would like to use a preauthorized key
+      # authKeyFile = "/run/secrets/tailscale_key";
+    };
   };
 
   # List packages installed in system profile.
@@ -167,6 +175,7 @@
       kdePackages.kate
       imagemagick
       signal-desktop
+      tailscale-systray
     ];
   };
 
