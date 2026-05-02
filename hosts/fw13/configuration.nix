@@ -11,17 +11,8 @@
   imports = [
     nixos-hardware.nixosModules.framework-amd-ai-300-series
 
-    # Include the results of the hardware scan.
     ./hardware-configuration.nix
-  ];
-
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-
-  # Enable Flakes + nix-command
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
+    ../common.nix
   ];
 
   boot = {
@@ -37,45 +28,10 @@
   };
 
   networking = {
-    hostName = "nixos";
-    # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+    hostName = "fw13";
 
-    # Enable networking
-    networkmanager.enable = true;
-
-    firewall.allowedTCPPorts = [
-      # localsend
-      53317
-    ];
-  };
-
-  # Time zone
-  time.timeZone = "Europe/Paris";
-
-  # Internationalisation
-  i18n = {
-    defaultLocale = "en_US.UTF-8";
-
-    extraLocaleSettings = {
-      LC_ADDRESS = "fr_FR.UTF-8";
-      LC_IDENTIFICATION = "fr_FR.UTF-8";
-      LC_MEASUREMENT = "fr_FR.UTF-8";
-      LC_MONETARY = "fr_FR.UTF-8";
-      LC_NAME = "fr_FR.UTF-8";
-      LC_NUMERIC = "fr_FR.UTF-8";
-      LC_PAPER = "fr_FR.UTF-8";
-      LC_TELEPHONE = "fr_FR.UTF-8";
-      LC_TIME = "fr_FR.UTF-8";
-    };
-  };
-
-  programs = {
-    ssh = {
-      startAgent = true;
-      enableAskPassword = true;
-    };
-
-    steam.enable = true;
+    # Enables wireless support via wpa_supplicant.
+    # wireless.enable = true;
   };
 
   services = {
@@ -83,13 +39,7 @@
     desktopManager.plasma6.enable = true;
     displayManager.sddm.enable = true;
 
-    mullvad-vpn = {
-      enable = true;
-      package = pkgs.mullvad-vpn;
-    };
-
     # Sound with pipewire
-    pulseaudio.enable = false;
     pipewire = {
       enable = true;
       alsa.enable = true;
@@ -102,11 +52,6 @@
     # CUPS to print documents
     printing.enable = true;
 
-    tailscale = {
-      # Enable tailscale at startup
-      enable = true;
-    };
-
     udev = {
       enable = true;
       # Fix fprintd after sleep
@@ -115,35 +60,9 @@
         ACTION=="add", SUBSYSTEM=="usb", DRIVERS=="usb", ATTRS{idVendor}=="27c6", ATTRS{idProduct}=="609c", ATTR{power/persist}="1", RUN="${pkgs.coreutils}/bin/chmod 444 %S%p/../power/persist"
       '';
     };
-
-    # Disable X11
-    xserver.enable = false;
-
-    # Keymap in X11
-    xserver.xkb = {
-      layout = "us";
-      variant = "";
-    };
-  };
-
-  # List packages installed in system profile.
-  # To search, run: $ nix search wget
-  environment = {
-    systemPackages = with pkgs; [
-      curl
-      usbutils
-      vim
-      wget
-    ];
-
-    variables = {
-      SSH_ASKPASS_REQUIRE = "prefer";
-    };
   };
 
   security = {
-    rtkit.enable = true;
-
     # Disable fingerprint login
     # SDDM gets stuck waiting for fingerprint when it is enabled.
     # See: https://github.com/NixOS/nixpkgs/issues/239770
@@ -155,33 +74,10 @@
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.jy = {
-    isNormalUser = true;
-    description = "Jacques-Yves";
-    extraGroups = [
-      "networkmanager"
-      "wheel"
-    ];
-
     packages = with pkgs; [
-      imagemagick
       moonlight-qt
-      signal-desktop
-      tailscale-systray
     ];
   };
-
-  # Fonts
-  fonts.packages = with pkgs; [
-    nerd-fonts.jetbrains-mono
-  ];
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
