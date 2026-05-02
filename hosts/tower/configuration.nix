@@ -65,12 +65,6 @@
 
     xserver = {
       videoDrivers = [ "nvidia" ];
-
-      # Configure keymap in X11
-      xkb = {
-        layout = "fr";
-        variant = "";
-      };
     };
   };
 
