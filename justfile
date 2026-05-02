@@ -1,30 +1,38 @@
-deploy:
-  sudo nixos-rebuild switch --flake .#fw13
+# List recipes
+default:
+    just --list
 
-debug:
-  sudo nixos-rebuild switch --flake .#fw13 --show-trace --verbose
+# Apply NixOS configuration
+deploy host:
+    sudo nixos-rebuild switch --flake .#{{ host }}
 
-home-switch:
-  home-manager switch --flake .#jy
+# Apply NixOS configuration (verbose)
+debug host:
+    sudo nixos-rebuild switch --flake .#{{ host }} --show-trace --verbose
 
+# Apply Home Manager configuration
+home:
+    home-manager switch --flake .#jy
+
+# Update flake
 update:
-  nix flake update
+    nix flake update
 
-# Update specific input
-# usage: make upp i=home-manager
+# Update specific input. Usage: make upp i=home-manager
 upp:
-  nix flake update $(i)
+    nix flake update $(i)
 
 history:
-  nix profile history --profile /nix/var/nix/profiles/system
+    nix profile history --profile /nix/var/nix/profiles/system
 
+# Start a nix REPL
 repl:
-  nix repl -f flake:nixpkgs
+    nix repl -f flake:nixpkgs
 
+# Remove all generations older than 7 days
 clean:
-  # remove all generations older than 7 days
-  sudo nix profile wipe-history --profile /nix/var/nix/profiles/system  --older-than 7d
+    sudo nix profile wipe-history --profile /nix/var/nix/profiles/system  --older-than 7d
 
+# Garbage collect all unused nix store entries
 gc:
-  # garbage collect all unused nix store entries
-  sudo nix-collect-garbage --delete-old
+    sudo nix-collect-garbage --delete-old
