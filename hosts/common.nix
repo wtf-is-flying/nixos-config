@@ -53,6 +53,34 @@
   };
 
   services = {
+    # Kanata
+    kanata = {
+      enable = true;
+
+      keyboards.default = {
+        extraDefCfg = ''
+          process-unmapped-keys yes
+        '';
+        config = ''
+          #|
+              Keymap: https://github.com/jtroo/kanata/blob/209f173f6fdda371cc21bad3cf2c3b9b7328b85b/parser/src/keys/mod.rs#L176
+          |#
+
+          (defsrc
+              caps
+          )
+
+          (deflayer default
+              @cap
+          )
+
+          (defalias
+              cap (tap-hold-press 0 200 esc lctl)
+          )
+        '';
+      };
+    };
+
     # Mullvad VPN
     mullvad-vpn = {
       enable = true;
@@ -93,6 +121,7 @@
     description = "Jacques-Yves";
     extraGroups = [
       "networkmanager"
+      "uinput" # Required by Kanata
       "wheel"
     ];
 

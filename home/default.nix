@@ -4,7 +4,6 @@
     ./browsers.nix
     ./editors
     ./git.nix
-    ./kanata
     ./languages.nix
     ./plasma.nix
     ./shell
