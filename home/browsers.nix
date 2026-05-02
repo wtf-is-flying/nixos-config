@@ -47,6 +47,7 @@
                 "kagi.com"
                 "proton.me"
                 "simplelogin.io"
+                "trainline.fr"
                 "twitch.tv"
                 "youtube.com"
               ];
