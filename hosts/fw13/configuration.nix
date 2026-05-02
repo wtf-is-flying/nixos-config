@@ -79,21 +79,14 @@
   };
 
   services = {
-    # Disable X11
-    xserver.enable = false;
-
     # KDE Plasma
-    displayManager.sddm.enable = true;
     desktopManager.plasma6.enable = true;
+    displayManager.sddm.enable = true;
 
-    # Keymap in X11
-    xserver.xkb = {
-      layout = "us";
-      variant = "";
+    mullvad-vpn = {
+      enable = true;
+      package = pkgs.mullvad-vpn;
     };
-
-    # CUPS to print documents
-    printing.enable = true;
 
     # Sound with pipewire
     pulseaudio.enable = false;
@@ -106,6 +99,14 @@
       # jack.enable = true;
     };
 
+    # CUPS to print documents
+    printing.enable = true;
+
+    tailscale = {
+      # Enable tailscale at startup
+      enable = true;
+    };
+
     udev = {
       enable = true;
       # Fix fprintd after sleep
@@ -115,14 +116,13 @@
       '';
     };
 
-    mullvad-vpn = {
-      enable = true;
-      package = pkgs.mullvad-vpn;
-    };
+    # Disable X11
+    xserver.enable = false;
 
-    tailscale = {
-      # Enable tailscale at startup
-      enable = true;
+    # Keymap in X11
+    xserver.xkb = {
+      layout = "us";
+      variant = "";
     };
   };
 
