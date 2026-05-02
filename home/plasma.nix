@@ -4,7 +4,7 @@
 
     workspace = {
       lookAndFeel = "org.kde.breezetwilight.desktop";
-      wallpaper = ../static/wallpaper.png;
+      wallpaper = ../assets/wallpaper.png;
     };
 
     shortcuts = {
