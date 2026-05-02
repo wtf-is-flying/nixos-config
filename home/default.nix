@@ -6,6 +6,7 @@
     ./git.nix
     ./kanata
     ./languages.nix
+    ./plasma.nix
     ./shell
     ./term
     ./tmux

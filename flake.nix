@@ -15,6 +15,12 @@
     };
 
     lazyvim-nix.url = "github:pfassina/lazyvim-nix";
+
+    plasma-manager = {
+      url = "github:nix-community/plasma-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
   };
 
   outputs =
@@ -23,6 +29,7 @@
       home-manager,
       nixos-hardware,
       lazyvim-nix,
+      plasma-manager,
       ...
     }:
     let
@@ -54,6 +61,7 @@
           };
           modules = [
             ./home
+            plasma-manager.homeModules.plasma-manager
           ];
 
           # Optionally use extraSpecialArgs
