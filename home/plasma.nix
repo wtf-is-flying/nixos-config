@@ -1,11 +1,11 @@
-{ pkgs, ... }:
 {
   programs.plasma = {
     enable = true;
 
-    # workspace = {
-    #   wallpaper = "${pkgs.kdePackages.plasma-workspace-wallpapers}/share/wallpapers/Patak/contents/images/1080x1920.png";
-    # };
+    workspace = {
+      lookAndFeel = "org.kde.breezetwilight.desktop";
+      wallpaper = ../static/wallpaper.png;
+    };
 
     shortcuts = {
       "services/com.mitchellh.ghostty.desktop"._launch = "Meta+Return";
