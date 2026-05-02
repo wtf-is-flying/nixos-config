@@ -27,9 +27,9 @@
       sync.keyFile = ./secret.ankikey;
     };
 
-    lazydocker = {
-      enable = true;
-    };
+    lazydocker.enable = true;
+
+    mpv.enable = true;
 
     vesktop.enable = true;
   };
