@@ -14,8 +14,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # lazyvim-nix
-    lazyvim.url = "github:pfassina/lazyvim-nix";
+    lazyvim-nix.url = "github:pfassina/lazyvim-nix";
   };
 
   outputs =
@@ -23,7 +22,7 @@
       nixpkgs,
       home-manager,
       nixos-hardware,
-      lazyvim,
+      lazyvim-nix,
       ...
     }:
     let
@@ -60,7 +59,7 @@
           # Optionally use extraSpecialArgs
           # to pass through arguments to home.nix
           extraSpecialArgs = {
-            inherit lazyvim;
+            inherit lazyvim-nix;
           };
         };
     in

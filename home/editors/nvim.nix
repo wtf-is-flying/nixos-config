@@ -1,9 +1,9 @@
 {
-  lazyvim,
+  lazyvim-nix,
   ...
 }:
 {
-  imports = [ lazyvim.homeManagerModules.default ];
+  imports = [ lazyvim-nix.homeManagerModules.default ];
 
   programs.neovim = {
     enable = true;
