@@ -11,6 +11,14 @@
       "services/com.mitchellh.ghostty.desktop"._launch = "Meta+Return";
     };
 
+    panels = [
+      {
+        location = "bottom";
+        floating = true;
+        height = 44;
+      }
+    ];
+
     input.keyboard = {
       layouts = [
         {
