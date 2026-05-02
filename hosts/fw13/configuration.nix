@@ -1,6 +1,3 @@
-# Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
 {
   nixos-hardware,
   pkgs,
@@ -39,7 +36,7 @@
     desktopManager.plasma6.enable = true;
     displayManager.sddm.enable = true;
 
-    # Sound with pipewire
+    # Sound
     pipewire = {
       enable = true;
       alsa.enable = true;
@@ -59,6 +56,12 @@
       extraRules = ''
         ACTION=="add", SUBSYSTEM=="usb", DRIVERS=="usb", ATTRS{idVendor}=="27c6", ATTRS{idProduct}=="609c", ATTR{power/persist}="1", RUN="${pkgs.coreutils}/bin/chmod 444 %S%p/../power/persist"
       '';
+    };
+
+    # Keymap in X11
+    xserver.xkb = {
+      layout = "us";
+      variant = "";
     };
   };
 

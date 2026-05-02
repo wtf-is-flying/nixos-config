@@ -1,10 +1,7 @@
 # Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{
-  pkgs,
-  ...
-}:
+{ pkgs, ... }:
 
 {
   # Allow unfree packages
@@ -69,12 +66,6 @@
 
     # Disable X11
     xserver.enable = false;
-
-    # Keymap in X11
-    xserver.xkb = {
-      layout = "us";
-      variant = "";
-    };
   };
 
   # List packages installed in system profile.
