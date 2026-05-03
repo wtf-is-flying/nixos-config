@@ -8,6 +8,8 @@
     };
 
     shortcuts = {
+      kwin.Overview = [ "Meta" ];
+      plasmashell."activate application launcher" = [ "Alt+F1" ];
       "services/com.mitchellh.ghostty.desktop"._launch = "Meta+Return";
     };
 
