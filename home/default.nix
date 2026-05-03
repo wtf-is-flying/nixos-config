@@ -7,6 +7,7 @@
     ./languages.nix
     ./plasma.nix
     ./shell
+    ./sops.nix
     ./term
     ./tmux
   ];

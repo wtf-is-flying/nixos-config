@@ -21,6 +21,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
+
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -30,6 +35,7 @@
       nixos-hardware,
       lazyvim-nix,
       plasma-manager,
+      sops-nix,
       ...
     }:
     let
@@ -68,6 +74,7 @@
           # to pass through arguments to home.nix
           extraSpecialArgs = {
             inherit lazyvim-nix;
+            inherit sops-nix;
           };
         };
     in

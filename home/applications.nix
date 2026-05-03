@@ -1,6 +1,10 @@
 # Programs that don't fit anywhere else :)
 
-{ pkgs, ... }:
+{
+  pkgs,
+  config,
+  ...
+}:
 {
   # Packages that should be installed to the user profile.
   home.packages = with pkgs; [
@@ -12,6 +16,7 @@
     btop
     jq
     just
+    sops
 
     localsend
   ];
@@ -24,7 +29,7 @@
       enable = true;
       language = "en_US";
       sync.username = "learn.rethink836@slmail.me";
-      sync.keyFile = ./secret.ankikey;
+      sync.keyFile = config.sops.secrets.anki_key.path;
     };
 
     lazydocker.enable = true;

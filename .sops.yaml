@@ -1,0 +1,7 @@
+keys:
+  - &fw13 age1v05kaxpne7xs9jmw599s09l66c83favq4a70eljjtkk68wamcd4q6sft69
+creation_rules:
+  - path_regex: home/[^/]+\.(yaml|json|env|ini)$
+    key_groups:
+    - age:
+      - *fw13 
