@@ -17,20 +17,24 @@
 
     extras = {
       lang = {
-        nix.enable = true;
+        go = {
+          enable = true;
+          installDependencies = true; # Install gopls, gofumpt, etc.
+        };
 
-        rust.enable = true;
+        nix = {
+          enable = true;
+          installDependencies = true;
+        };
 
         python = {
           enable = true;
           installDependencies = true; # Install ruff
-          installRuntimeDependencies = true; # Install python3
         };
 
-        go = {
+        rust = {
           enable = true;
-          installDependencies = true; # Install gopls, gofumpt, etc.
-          installRuntimeDependencies = true; # Install go compiler
+          installDependencies = true;
         };
       };
     };
