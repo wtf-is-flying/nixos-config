@@ -124,12 +124,6 @@
       "uinput" # Required by Kanata
       "wheel"
     ];
-
-    packages = with pkgs; [
-      imagemagick
-      signal-desktop
-      tailscale-systray
-    ];
   };
 
   # Fonts

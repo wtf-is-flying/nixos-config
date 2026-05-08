@@ -19,6 +19,10 @@
     sops
 
     localsend
+
+    imagemagick
+    signal-desktop
+    tailscale-systray
   ];
 
   programs = {
