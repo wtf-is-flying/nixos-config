@@ -16,8 +16,8 @@
       markdownlint-cli2
 
       # Nix
-      nixfmt
       nil
+      nixfmt
       statix
 
       # Node
@@ -34,6 +34,11 @@
       rust-analyzer
       rustc
       rustfmt
+
+      # Typst
+      tinymist
+      typst
+      typstyle
 
       # Utils
       tree-sitter

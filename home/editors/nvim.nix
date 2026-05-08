@@ -36,6 +36,11 @@
           enable = true;
           installDependencies = true;
         };
+
+        typst = {
+          enable = true;
+          installDependencies = true;
+        };
       };
     };
 
