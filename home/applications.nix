@@ -8,21 +8,18 @@
 {
   # Packages that should be installed to the user profile.
   home.packages = with pkgs; [
-    lsof
-    tree
-    zip
-    unzip
-
     btop
+    imagemagick
     jq
     just
-    sops
-
     localsend
-
-    imagemagick
+    lsof
     signal-desktop
+    sops
     tailscale-systray
+    tree
+    unzip
+    zip
   ];
 
   programs = {
