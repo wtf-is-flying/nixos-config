@@ -3,13 +3,13 @@
     ./applications.nix
     ./browsers.nix
     ./editors
-    ./git.nix
     ./languages.nix
     ./plasma.nix
     ./shell
     ./sops.nix
     ./term
     ./tmux
+    ./vcs.nix
   ];
 
   home = {
