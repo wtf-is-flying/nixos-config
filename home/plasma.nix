@@ -32,6 +32,9 @@
         }
       ];
 
+      repeatDelay = 300;
+      repeatRate = 50;
+
       options = [ "caps:escape" ];
     };
 
