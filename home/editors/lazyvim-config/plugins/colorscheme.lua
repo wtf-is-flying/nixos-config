@@ -6,12 +6,13 @@ return {
       vim.g.everforest_background = "hard"
     end,
   },
+  { "vague-theme/vague.nvim" },
 
-  -- Configure LazyVim to load gruvbox
+  -- Configure LazyVim to load theme
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "everforest",
+      colorscheme = "vague",
     },
   },
 }

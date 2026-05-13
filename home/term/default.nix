@@ -11,7 +11,7 @@
       command = "fish";
       font-family = "JetBrainsMono Nerd Font";
       font-size = 10;
-      theme = "Everforest Dark Hard";
+      theme = "Vague";
     };
   };
 }
