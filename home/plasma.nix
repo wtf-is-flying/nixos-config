@@ -7,6 +7,10 @@
       wallpaper = ../assets/wallpaper.png;
     };
 
+    kscreenlocker = {
+      appearance.wallpaper = ../assets/wallpaper.png;
+    };
+
     shortcuts = {
       kwin.Overview = [ "Meta" ];
       plasmashell."activate application launcher" = [ "Alt+F1" ];
