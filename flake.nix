@@ -7,6 +7,11 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
 
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     home-manager = {
@@ -31,6 +36,7 @@
   outputs =
     {
       nixpkgs,
+      disko,
       home-manager,
       nixos-hardware,
       lazyvim-nix,
@@ -53,6 +59,7 @@
           };
           modules = [
             { nixpkgs.config = nixpkgsConfig; }
+            disko.nixosModules.disko
             ./hosts/${hostname}/configuration.nix
           ];
         };
@@ -82,6 +89,7 @@
       nixosConfigurations = {
         fw13 = mkNixosConfiguration "fw13";
         tower = mkNixosConfiguration "tower";
+        vps = mkNixosConfiguration "vps";
       };
 
       homeConfigurations."jy" = mkHomeManagerConfiguration "x86_64-linux";

@@ -47,6 +47,12 @@
     ssh = {
       startAgent = true;
       enableAskPassword = true;
+      extraConfig = "
+      Host vps
+        Hostname 82.165.182.162
+        Port 9274
+        User jy
+    ";
     };
 
     steam.enable = true;
