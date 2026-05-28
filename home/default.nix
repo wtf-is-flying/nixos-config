@@ -1,3 +1,7 @@
+{ pkgs, ... }:
+let
+  inherit (pkgs.stdenv) isLinux;
+in
 {
   imports = [
     ./applications.nix
@@ -18,8 +22,8 @@
   home = {
     # Home Manager needs a bit of information about you and the
     # paths it should manage.
-    username = "jy";
-    homeDirectory = "/home/jy";
+    username = if isLinux then "jy" else "jacquesyves";
+    homeDirectory = if isLinux then "/home/jy" else "/Users/jacquesyves";
 
     # This value determines the Home Manager release that your
     # configuration is compatible with. This helps avoid breakage
