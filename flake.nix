@@ -92,6 +92,7 @@
         vps = mkNixosConfiguration "vps";
       };
 
-      homeConfigurations."jy" = mkHomeManagerConfiguration "x86_64-linux";
+      homeConfigurations."linux" = mkHomeManagerConfiguration "x86_64-linux";
+      homeConfigurations."darwin" = mkHomeManagerConfiguration "aarch64-darwin";
     };
 }

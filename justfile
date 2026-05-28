@@ -11,8 +11,8 @@ debug host:
     sudo nixos-rebuild switch --flake .#{{ host }} --show-trace --verbose
 
 # Apply Home Manager configuration
-home:
-    home-manager switch --flake .#jy
+home system:
+    home-manager switch --flake .#{{ system }}
 
 # Update flake
 update:

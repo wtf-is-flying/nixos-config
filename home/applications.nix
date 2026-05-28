@@ -7,20 +7,24 @@
 }:
 {
   # Packages that should be installed to the user profile.
-  home.packages = with pkgs; [
-    btop
-    imagemagick
-    jq
-    just
-    localsend
-    lsof
-    signal-desktop
-    sops
-    tailscale-systray
-    tree
-    unzip
-    zip
-  ];
+  home.packages =
+    with pkgs;
+    [
+      btop
+      imagemagick
+      jq
+      just
+      localsend
+      lsof
+      signal-desktop
+      sops
+      tree
+      unzip
+      zip
+    ]
+    ++ lib.optionals stdenv.isLinux [
+      tailscale-systray
+    ];
 
   programs = {
     # Let Home Manager install and manage itself.
