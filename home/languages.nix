@@ -35,6 +35,12 @@
       rustc
       rustfmt
 
+      # SQL
+      sqlfluff
+
+      # TOML
+      taplo
+
       # Typst
       tinymist
       typst
