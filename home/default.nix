@@ -12,6 +12,7 @@
     ./sops.nix
     ./tmux.nix
     ./wezterm.nix
+    ./xdg.nix
   ];
 
   home = {
@@ -29,22 +30,5 @@
     # the Home Manager release notes for a list of state version
     # changes in each release.
     stateVersion = "25.11";
-  };
-
-  # Default applications
-  xdg.mimeApps = {
-    enable = true;
-
-    defaultApplications =
-      let
-        librewolf = "librewolf.desktop";
-      in
-      {
-        "text/html" = librewolf;
-        "x-scheme-handler/http" = librewolf;
-        "x-scheme-handler/https" = librewolf;
-        "x-scheme-handler/about" = librewolf;
-        "x-scheme-handler/unknown" = librewolf;
-      };
   };
 }
