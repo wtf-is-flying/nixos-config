@@ -1,9 +1,11 @@
 keys:
   - &fw13 age1v05kaxpne7xs9jmw599s09l66c83favq4a70eljjtkk68wamcd4q6sft69
   - &tower age1fsu82ury8v9p9hqfmp58p7f28cpd53454vsyls2yrq4dmusl5dsq9pzus5
+  - &mpb age19xpqh6fdh6hhycpe4gdmcgt47dwp65jgzpm9qkmp0cumgrzmmp3qwj90j7
 creation_rules:
   - path_regex: home/[^/]+\.(yaml|json|env|ini)$
     key_groups:
     - age:
       - *fw13 
       - *tower 
+      - *mpb
