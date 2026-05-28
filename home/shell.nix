@@ -30,7 +30,7 @@
 
     fish = {
       enable = true;
-      interactiveShellInit = builtins.readFile ./config.fish;
+      interactiveShellInit = builtins.readFile ./config/fish/config.fish;
     };
 
     fzf = {

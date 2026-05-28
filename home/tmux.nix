@@ -12,7 +12,7 @@
       tmuxPlugins.vim-tmux-navigator
       tmuxPlugins.yank
     ];
-    extraConfig = builtins.readFile ./tmux.conf;
+    extraConfig = builtins.readFile ./config/tmux/tmux.conf;
   };
 
 }

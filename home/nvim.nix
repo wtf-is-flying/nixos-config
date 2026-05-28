@@ -13,7 +13,7 @@
 
   programs.lazyvim = {
     enable = true;
-    configFiles = ./lazyvim-config;
+    configFiles = ./config/lazyvim;
 
     extras = {
       lang = {

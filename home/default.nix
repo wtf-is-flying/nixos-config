@@ -2,14 +2,16 @@
   imports = [
     ./applications.nix
     ./browsers.nix
-    ./editors
+    ./ghostty.nix
+    ./git.nix
+    ./jj.nix
     ./languages.nix
+    ./nvim.nix
     ./plasma.nix
-    ./shell
+    ./shell.nix
     ./sops.nix
-    ./term
-    ./tmux
-    ./vcs.nix
+    ./tmux.nix
+    ./wezterm.nix
   ];
 
   home = {
