@@ -41,6 +41,6 @@
 
     mpv.enable = true;
 
-    vesktop.enable = true;
+    vesktop.enable = pkgs.stdenv.isLinux;
   };
 }
