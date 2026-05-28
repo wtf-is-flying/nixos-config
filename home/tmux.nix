@@ -1,18 +1,25 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 {
   programs.tmux = {
     enable = true;
-    shell = "${pkgs.fish}/bin/fish";
     shortcut = "a";
+
+    shell = lib.getExe pkgs.fish;
+    terminal = "screen-256color";
+
     mouse = true;
     keyMode = "vi";
-    terminal = "screen-256color";
+    escapeTime = 0; # Fix slow vi mode
+
+    historyLimit = 50000;
+    baseIndex = 1;
+    focusEvents = true;
+
     plugins = with pkgs; [
-      tmuxPlugins.sensible
       tmuxPlugins.vim-tmux-navigator
       tmuxPlugins.yank
     ];
+
     extraConfig = builtins.readFile ./config/tmux/tmux.conf;
   };
-
 }
