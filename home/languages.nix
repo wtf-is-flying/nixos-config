@@ -46,6 +46,9 @@
       typst
       typstyle
 
+      # YAML
+      yaml-language-server
+
       # Utils
       tree-sitter
     ];

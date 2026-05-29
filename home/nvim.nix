@@ -16,10 +16,27 @@
     configFiles = ./config/lazyvim;
 
     extras = {
+      formatting = {
+        prettier = {
+          enable = true;
+          installDependencies = true;
+        };
+      };
+
       lang = {
+        docker = {
+          enable = true;
+          installDependencies = true;
+        };
+
         go = {
           enable = true;
           installDependencies = true; # Install gopls, gofumpt, etc.
+        };
+
+        helm = {
+          enable = true;
+          installDependencies = true;
         };
 
         nix = {
@@ -38,6 +55,11 @@
         };
 
         typst = {
+          enable = true;
+          installDependencies = true;
+        };
+
+        yaml = {
           enable = true;
           installDependencies = true;
         };
