@@ -12,6 +12,7 @@ in
       font-family = "JetBrainsMono Nerd Font";
       font-size = if isLinux then 10 else 12;
       theme = "Vague";
+      macos-option-as-alt = "left";
     };
   };
 }

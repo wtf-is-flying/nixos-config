@@ -17,6 +17,7 @@ in
     ./tmux.nix
     ./wezterm.nix
     ./xdg.nix
+    ./zellij.nix
   ];
 
   home = {
