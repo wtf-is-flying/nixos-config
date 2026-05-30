@@ -2,18 +2,9 @@
 {
   programs.tmux = {
     enable = true;
-    shortcut = "a";
 
     shell = lib.getExe pkgs.fish;
-    terminal = "screen-256color";
-
-    mouse = true;
-    keyMode = "vi";
-    escapeTime = 0; # Fix slow vi mode
-
-    historyLimit = 50000;
-    baseIndex = 1;
-    focusEvents = true;
+    terminal = "tmux-256color";
 
     plugins = with pkgs; [
       tmuxPlugins.vim-tmux-navigator
@@ -22,4 +13,15 @@
 
     extraConfig = builtins.readFile ./config/tmux/tmux.conf;
   };
+
+  # Patch tmux-256color terminfo to add undercurl support
+  home.activation.compileUndercurlTerminfo = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    verboseEcho "Compiling tmux-256color terminfo with Smulx (undercurl) support"
+    run mkdir -p "$HOME/.terminfo"
+    cat > /tmp/tmux-256color.ti << 'EOF'
+    ${builtins.readFile ./config/tmux/tmux-256color.ti}
+    EOF
+    run tic -x -o "$HOME/.terminfo" /tmp/tmux-256color.ti
+  '';
+
 }
