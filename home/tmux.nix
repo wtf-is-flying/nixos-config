@@ -9,6 +9,7 @@
     plugins = with pkgs; [
       tmuxPlugins.vim-tmux-navigator
       tmuxPlugins.yank
+      tmuxPlugins.tmux-toggle-popup
     ];
 
     extraConfig = builtins.readFile ./config/tmux/tmux.conf;
