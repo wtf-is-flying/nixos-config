@@ -12,10 +12,27 @@
     "nix-command"
     "flakes"
   ];
-
   networking = {
-    # Enable networking
-    networkmanager.enable = true;
+    networkmanager = {
+      # Enable networking
+      enable = true;
+      # Disable NetworkManager's internal DNS resolution
+      dns = "none";
+    };
+
+    # These options are unnecessary when managing DNS ourselves
+    useDHCP = false;
+    dhcpcd.enable = false;
+
+    # Configure DNS servers manually
+    # IPv6 DNS servers can be used here as well.
+    nameservers = [
+      # Quad9
+      "9.9.9.9"
+      "149.112.112.112"
+      "2620:fe::fe"
+      "2620:fe::9"
+    ];
 
     firewall.allowedTCPPorts = [
       # localsend
