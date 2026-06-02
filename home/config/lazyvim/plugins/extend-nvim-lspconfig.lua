@@ -37,6 +37,9 @@ return {
         },
       },
       gopls = {
+        init_options = {
+          semanticTokens = true,
+        },
         settings = {
           gopls = {
             analyses = {
