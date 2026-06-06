@@ -1,6 +1,7 @@
 {
   lib,
   pkgs,
+  config,
   ...
 }:
 let
@@ -19,7 +20,13 @@ let
         engines = {
           kagi = {
             name = "Kagi";
-            urls = [ { template = "https://kagi.com/search?q={searchTerms}"; } ];
+            urls = [
+              { template = "https://kagi.com/search?q={searchTerms}"; }
+              {
+                template = "https://kagisuggest.com/api/autosuggest?q={searchTerms}";
+                type = "application/x-suggestions+json";
+              }
+            ];
             icon = "https://kagi.com/favicon.ico";
           };
         };
@@ -131,6 +138,8 @@ in
 
     firefox = lib.recursiveUpdate commonFirefoxConfiguration {
       enable = true;
+
+      configPath = "${config.xdg.configHome}/mozilla/firefox";
 
       profiles.default.settings = {
         # Disable irritating first-run stuff
