@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 
 {
   home = {
@@ -15,6 +15,14 @@
     atuin = {
       enable = true;
       enableFishIntegration = true;
+
+      settings = {
+        enter_accept = true;
+        logs = {
+          enabled = true;
+          dir = "${config.xdg.stateHome}/atuin/logs";
+        };
+      };
     };
 
     direnv = {
