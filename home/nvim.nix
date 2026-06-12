@@ -16,6 +16,8 @@
     configFiles = ./config/lazyvim;
 
     extras = {
+      coding.yanky.enable = true;
+
       formatting = {
         prettier = {
           enable = true;
@@ -54,6 +56,15 @@
           installDependencies = true;
         };
 
+        sql = {
+          enable = true;
+          installDependencies = true;
+        };
+
+        toml = {
+          enable = true;
+        };
+
         typst = {
           enable = true;
           installDependencies = true;
@@ -64,6 +75,8 @@
           installDependencies = true;
         };
       };
+
+      test.core.enable = true;
     };
 
     # Additional packages (optional)
