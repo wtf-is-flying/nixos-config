@@ -1,17 +1,19 @@
 return {
-  {
-    "stevearc/conform.nvim",
-    opts = {
-      formatters = {
-        stylua = {
-          append_args = {
-            "--indent-type",
-            "Spaces",
-            "--indent-width",
-            "2",
-          },
+  "stevearc/conform.nvim",
+  optional = true,
+  opts = function(_, opts)
+    opts.formatters = {
+      sqlfluff = {
+        args = { "format", "-" },
+      },
+      stylua = {
+        append_args = {
+          "--indent-type",
+          "Spaces",
+          "--indent-width",
+          "2",
         },
       },
-    },
-  },
+    }
+  end,
 }
