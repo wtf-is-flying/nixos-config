@@ -34,6 +34,7 @@ let
       settings = {
         "browser.startup.homepage" = "about:home";
         "browser.search.suggest.enabled" = true;
+        "browser.urlbar.suggest.searches" = true;
 
         # Enable Firefox sync
         "identity.fxaccounts.enabled" = true;
