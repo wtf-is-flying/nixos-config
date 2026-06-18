@@ -82,6 +82,7 @@ let
               "claude.ai"
               "deezer.com"
               "devdocs.io"
+              "doctolib.fr"
               "duckduckgo.com"
               "github.com"
               "google.com"
