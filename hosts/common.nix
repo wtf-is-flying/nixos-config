@@ -130,6 +130,7 @@
   environment = {
     systemPackages = with pkgs; [
       curl
+      exfat
       usbutils
       vim
       wget
