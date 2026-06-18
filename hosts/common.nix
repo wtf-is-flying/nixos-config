@@ -17,7 +17,7 @@
       # Enable networking
       enable = true;
       # Disable NetworkManager's internal DNS resolution
-      dns = "none";
+      # dns = "none";
     };
 
     # These options are unnecessary when managing DNS ourselves
@@ -108,6 +108,12 @@
     mullvad-vpn = {
       enable = true;
       package = pkgs.mullvad-vpn;
+    };
+
+    # Required for Mullvad VPN to work
+    # See: https://wiki.nixos.org/wiki/Mullvad_VPN
+    resolved = {
+      enable = true;
     };
 
     # Tailscale

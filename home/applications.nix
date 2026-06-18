@@ -16,6 +16,7 @@
       just
       localsend
       lsof
+      qbittorrent
       signal-desktop
       sops
       tree
