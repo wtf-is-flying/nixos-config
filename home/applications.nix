@@ -38,6 +38,8 @@
       sync.keyFile = config.sops.secrets.anki_key.path;
     };
 
+    calibre.enable = true;
+
     lazydocker.enable = true;
 
     mpv.enable = true;
