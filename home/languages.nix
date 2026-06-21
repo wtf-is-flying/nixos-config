@@ -29,6 +29,7 @@
       uv
 
       # Rust
+      bacon
       cargo
       clippy
       rust-analyzer
