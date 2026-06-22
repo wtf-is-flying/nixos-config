@@ -11,9 +11,6 @@ set -g fish_cursor_insert line
 set -g fish_cursor_replace_one underscore
 set -g fish_cursor_visual block
 
-# History is handled automatically by Fish, but we can set limits
-set -g history_max 50000
-
 ## Homebrew ---------------------------------------------------------
 if test -d /opt/homebrew/bin
     eval (/opt/homebrew/bin/brew shellenv)
@@ -46,17 +43,12 @@ if test -d ~/.config/flox/dev-base/
     eval (flox activate -d ~/.config/flox/dev-base/ -m run)
 end
 
-# rbenv
-if command -v rbenv >/dev/null
-    status --is-interactive; and rbenv init - fish | source
-end
-
 ## Exports & Paths --------------------------------------------------
 
 # Path Management (Fish uses $fish_user_paths for persistence)
-fish_add_path "$HOME/.local/bin"
-fish_add_path "$HOME/go/bin"
-fish_add_path "/opt/homebrew/opt/postgresql@16/bin"
+# fish_add_path "$HOME/.local/bin"
+# fish_add_path "$HOME/go/bin"
+# fish_add_path "/opt/homebrew/opt/postgresql@16/bin"
 
 # Domino / vops
 set -gx VOPS_PROJECT_PATH "$HOME/biolevate/domino"
@@ -79,9 +71,6 @@ function multicd
 end
 abbr --add dotdot --regex '^\.\.+$' --function multicd
 
-# Fix kitty over SSH
-# alias ssh="kitty +kitten ssh"
-
 # Trash
 abbr --add tp trash
 
@@ -100,7 +89,6 @@ end
 # Tools
 [ (command -v chezmoi) ]; and alias cm="chezmoi"
 alias cat="bat --style plain --pager never"
-# abbr --add cat bat --style plain --pager never
 abbr --add gg lazygit
 abbr --add lzd lazydocker
 abbr --add rr rops run
