@@ -58,13 +58,6 @@ fish_add_path "$HOME/.local/bin"
 fish_add_path "$HOME/go/bin"
 fish_add_path "/opt/homebrew/opt/postgresql@16/bin"
 
-# Cargo
-if test -f "$HOME/.cargo/env.fish"
-    source "$HOME/.cargo/env.fish"
-else
-    fish_add_path "$HOME/.cargo/bin"
-end
-
 # Domino / vops
 set -gx VOPS_PROJECT_PATH "$HOME/biolevate/domino"
 
