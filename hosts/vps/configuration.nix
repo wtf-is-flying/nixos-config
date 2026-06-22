@@ -75,9 +75,11 @@
   };
 
   environment.systemPackages = with pkgs; [
+    age
     curl
     gitMinimal
     neovim
+    sops
   ];
 
   users.users = {
