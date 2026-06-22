@@ -31,6 +31,7 @@
       # Rust
       bacon
       cargo
+      cargo-machete
       clippy
       rust-analyzer
       rustc
