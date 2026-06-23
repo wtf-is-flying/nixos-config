@@ -18,9 +18,6 @@ end
 
 ## Completion & Interactive -----------------------------------------
 
-# Custom uv run logic (Fish style)
-complete -c uv -n "__fish_seen_subcommand_from run" -a "(__fish_complete_path)"
-
 ## Tool Setup -------------------------------------------------------
 
 function fish_user_key_bindings
@@ -45,34 +42,16 @@ end
 
 ## Exports & Paths --------------------------------------------------
 
-# Path Management (Fish uses $fish_user_paths for persistence)
-# fish_add_path "$HOME/.local/bin"
-# fish_add_path "$HOME/go/bin"
-# fish_add_path "/opt/homebrew/opt/postgresql@16/bin"
-
 # Domino / vops
 set -gx VOPS_PROJECT_PATH "$HOME/biolevate/domino"
 
 ## Aliases & Functions ----------------------------------------------
-
-# Yazi (Function for CWD sync)
-function e
-    set tmp (mktemp -t "yazi-cwd.XXXXXX")
-    yazi $argv --cwd-file="$tmp"
-    if set cwd (cat "$tmp"); and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
-        builtin cd -- "$cwd"
-    end
-    rm -f -- "$tmp"
-end
 
 # Navigation
 function multicd
     echo cd (string repeat -n (math (string length -- $argv[1]) - 1) ../)
 end
 abbr --add dotdot --regex '^\.\.+$' --function multicd
-
-# Trash
-abbr --add tp trash
 
 # ls aliases (Eza)
 if command -v eza >/dev/null
@@ -87,9 +66,41 @@ else
 end
 
 # Tools
-[ (command -v chezmoi) ]; and alias cm="chezmoi"
 alias cat="bat --style plain --pager never"
 abbr --add gg lazygit
 abbr --add lzd lazydocker
 abbr --add rr rops run
 abbr --add pc process-compose
+
+# FIXME: whatever happens with $PATH and tmux
+alias vi=nvim
+
+# FIXME: very strange things are happening with child fish shells and completions
+
+function __dedupe_fish_complete_path
+    set -l seen
+    set -l out
+
+    for p in $fish_complete_path
+        if not contains -- $p $seen
+            set -a seen $p
+            set -a out $p
+        end
+    end
+
+    set -g fish_complete_path $out
+end
+
+set -g fish_complete_path \
+    (string match -v "$HOME/.nix-profile/share/fish/vendor_completions.d" $fish_complete_path)
+
+set -g fish_complete_path \
+    (string match -v "/nix/var/nix/profiles/default/share/fish/vendor_completions.d" $fish_complete_path)
+
+set -g fish_complete_path \
+    (string match -v "$HOME/.nix-profile/etc/fish/completions" $fish_complete_path)
+
+set -g fish_complete_path \
+    (string match -v "/nix/var/nix/profiles/default/etc/fish/completions" $fish_complete_path)
+
+__dedupe_fish_complete_path
