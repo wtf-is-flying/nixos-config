@@ -1,10 +1,15 @@
 # Programs that don't fit anywhere else :)
 
 {
+  lib,
   pkgs,
   config,
   ...
 }:
+
+let
+  isLinux = pkgs.stdenv.hostPlatform.isLinux;
+in
 {
   # Packages that should be installed to the user profile.
   home.packages =
@@ -23,7 +28,7 @@
       unzip
       zip
     ]
-    ++ lib.optionals stdenv.isLinux [
+    ++ lib.optionals isLinux [
       tailscale-systray
     ];
 
@@ -31,19 +36,20 @@
     # Let Home Manager install and manage itself.
     home-manager.enable = true;
 
-    anki = {
+    anki = lib.mkIf isLinux {
       enable = true;
       language = "en_US";
-      sync.username = "learn.rethink836@slmail.me";
-      sync.keyFile = config.sops.secrets.anki_key.path;
+
+      profiles."User 1".sync.username = "learn.rethink836@slmail.me";
+      profiles."User 1".sync.keyFile = config.sops.secrets.anki_key.path;
     };
 
-    calibre.enable = true;
+    calibre.enable = isLinux;
 
     lazydocker.enable = true;
 
     mpv.enable = true;
 
-    vesktop.enable = pkgs.stdenv.isLinux;
+    vesktop.enable = isLinux;
   };
 }
