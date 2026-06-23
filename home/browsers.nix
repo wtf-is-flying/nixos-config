@@ -141,6 +141,7 @@ in
     firefox =
       lib.recursiveUpdate commonFirefoxConfiguration {
         enable = true;
+        package = pkgs.firefox-bin;
 
         profiles.default.settings = {
           # Disable irritating first-run stuff
