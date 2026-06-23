@@ -13,7 +13,7 @@
 
   programs = {
     atuin = {
-      enable = true;
+      enable = false;
       enableFishIntegration = true;
 
       settings = {
@@ -34,11 +34,61 @@
     eza = {
       enable = true;
       enableFishIntegration = true;
+      icons = "auto";
+      extraOptions = [
+        "--group-directories-first"
+      ];
     };
 
     fish = {
       enable = true;
-      interactiveShellInit = builtins.readFile ./config/fish/config.fish;
+      interactiveShellInit = ''
+        set -g fish_greeting "" # Disable the welcome message
+        set -g fish_key_bindings fish_vi_key_bindings # Enable Vi mode natively
+      '';
+
+      functions = {
+        "multicd" = "echo cd (string repeat -n (math (string length -- $argv[1]) - 1) ../)";
+      };
+
+      binds = {
+        "\cp_default" = {
+          name = "\cp";
+          mode = "default";
+          command = "up-or-search";
+        };
+        "\cp_insert" = {
+          name = "\cp";
+          mode = "insert";
+          command = "up-or-search";
+        };
+        "\cn_default" = {
+          name = "\cn";
+          mode = "default";
+          command = "up-or-search";
+        };
+        "\cn_insert" = {
+          name = "\cn";
+          mode = "insert";
+          command = "up-or-search";
+        };
+      };
+
+      shellAliases = {
+        cat = "bat --style plain --pager never";
+      };
+
+      shellAbbrs = {
+        dotdot = {
+          regex = "^\\.\\.+$";
+          function = "multicd";
+        };
+        gg = "lazygit";
+        lzd = "lazydocker";
+        pc = "process-compose";
+        rr = "rops run";
+        vi = "nvim";
+      };
     };
 
     fzf = {
