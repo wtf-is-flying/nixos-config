@@ -76,6 +76,9 @@
 
       shellAliases = {
         cat = "bat --style plain --pager never";
+        l = "eza -l";
+        la = "eza -la";
+        ls = "eza";
       };
 
       shellAbbrs = {
