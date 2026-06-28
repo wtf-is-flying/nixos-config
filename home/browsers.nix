@@ -55,10 +55,11 @@ let
               "urlbar-container"
               "vertical-spacer"
               "alltabs-button"
-              "sidebar-button"
-              "unified-extensions-button"
+              "downloads-button"
               "ublock0_raymondhill_net-browser-action"
               "_d7742d87-e61d-4b78-b8a1-b469842139fa_-browser-action"
+              "unified-extensions-button"
+              "sidebar-button"
             ];
             unified-extensions-area = [ "_446900e4-71c2-419f-a6a7-df9c091e268b_-browser-action" ];
           };
