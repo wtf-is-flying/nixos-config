@@ -52,25 +52,25 @@
       };
 
       binds = {
-        "\cp_default" = {
-          name = "\cp";
+        "up_default" = {
+          name = "\\cp";
           mode = "default";
           command = "up-or-search";
         };
-        "\cp_insert" = {
-          name = "\cp";
+        "up_insert" = {
+          name = "\\cp";
           mode = "insert";
           command = "up-or-search";
         };
-        "\cn_default" = {
-          name = "\cn";
+        "down_default" = {
+          name = "\\cn";
           mode = "default";
-          command = "up-or-search";
+          command = "down-or-search";
         };
-        "\cn_insert" = {
-          name = "\cn";
+        "down_insert" = {
+          name = "\\cn";
           mode = "insert";
-          command = "up-or-search";
+          command = "down-or-search";
         };
       };
 
@@ -86,7 +86,8 @@
           regex = "^\\.\\.+$";
           function = "multicd";
         };
-        gg = "lazygit";
+        g = "lazygit";
+        j = "jjui";
         lzd = "lazydocker";
         pc = "process-compose";
         rr = "rops run";
